@@ -1,0 +1,39 @@
+from tkinter import*
+tk=Tk()
+tk.geometry("400x300")
+tk.title("Шифр Цезаря")
+l1=Label(text="Текст повідомлення")
+l1.place(x=30, y=30)
+ent1=Entry()
+ent1.place(x=30, y=60, width=250, height=30)
+l_key=Label(text="Ключ")
+l_key.place(x=30, y=125)
+ent_key=Entry()
+ent_key.place(x=80, y=120, width=50, height=30)
+def btn1_click():
+    ent2.delete(0,END)
+    s1=ent1.get()
+    key=int(ent_key.get())
+    s2=''
+    for i in s1:
+        kod=ord(i) + key
+        s2=s2+chr(kod)
+    ent2.insert(END,s2)
+btn1=Button(text="Зашифрувати", command=btn1_click)
+btn1.place(x=30, y=170, width=150, height=30)
+def btn2_click():
+    ent2.delete(0,END)
+    s1=ent1.get()
+    key=int(ent_key.get())
+    s2=''
+    for i in s1:
+        kod=ord(i) - key
+        s2=s2+chr(kod)
+    ent2.insert(END,s2)
+btn2=Button(text="Розшифрувати", command=btn2_click)
+btn2.place(x=200, y=170, width=150, height=30)
+l2=Label(text="Зашифроване повідомлення")
+l2.place(x=30, y=220)
+ent2=Entry()
+ent2.place(x=30, y=250, width=250, height=30)
+tk.mainloop()
